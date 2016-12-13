@@ -1,0 +1,24 @@
+version: '2'
+services:
+  php:
+    container_name: 'php'
+    build: ./php
+    expose:
+      - 9000
+    ports:
+      - 9000:9000
+    volumes:
+      - ./symfony:/var/www/symfony
+    environment:
+      - COMPOSER_PROCESS_TIMEOUT=600
+  nginx:
+    image: nginx
+    container_name: 'nginx'
+    ports:
+      - 80:80
+    links:
+      - php
+    volumes_from:
+      - php
+    volumes:
+      - ./nginx/symfony.conf:/etc/nginx/conf.d/symfony.conf
