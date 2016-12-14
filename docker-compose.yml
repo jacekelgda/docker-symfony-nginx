@@ -11,6 +11,7 @@ services:
       - ./symfony:/var/www/symfony
     environment:
       - COMPOSER_PROCESS_TIMEOUT=600
+    working_dir: '/var/www/symfony'
   nginx:
     image: nginx
     container_name: 'nginx'
