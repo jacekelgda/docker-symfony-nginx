@@ -6,6 +6,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPY ./supervisor/supervisord.conf /etc/supervisor/conf.d/1-supervisord.conf
 COPY ./supervisor/php.conf /etc/supervisor/conf.d/2-php.conf
 
-WORKDIR /var/www
-
 CMD ["/usr/bin/supervisord"]
